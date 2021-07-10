@@ -66,7 +66,7 @@ Este programa pode ser executado tanto em modo de paralelismo por **processos** 
 
 ## Resultados
 
-Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foir ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
+Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
 
 | Num Threads | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
 |:-----------:|:-----------------:|:-------------------------:|
@@ -75,6 +75,10 @@ Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e
 |      4      |     55.5700 s     |          0.6703 s         |
 |      8      |     70.6508 s     |          0.7966 s         | 
 
+<img src="images/threads.jpeg" alt="Threads Média" height="240">  
+<br />
+
+
 | Num Processos | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
 |:-------------:|:-----------------:|:-------------------------:|
 |      1        |     21.0353 s     |          0.5227 s         |
@@ -82,8 +86,6 @@ Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e
 |      4        |     57.6770 s     |          0.9950 s         |
 |      8        |     74.3596 s     |          2.7458 s         | 
 
-<img src="images/threads.jpeg" alt="Threads Média" height="240">  
-<br />
 <img src="images/processos.jpeg" alt="Processos Desvio" height="240">
 
 Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
