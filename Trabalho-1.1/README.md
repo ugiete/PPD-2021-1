@@ -78,25 +78,28 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
 
-| Num Threads | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
-|:-----------:|:-----------------:|:-------------------------:|
-|      1      |     20.5488 s     |          0.2856 s         |
-|      2      |     39.3205 s     |          0.4757 s         |
-|      4      |     55.5700 s     |          0.6703 s         |
-|      8      |     70.6508 s     |          0.7966 s         | 
+<center>
 
-<img src="images/threads.jpeg" alt="Threads Média" height="240">  
-<br />
+  | Num Threads | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
+  |:-----------:|:-----------------:|:-------------------------:|
+  |      1      |     20.5488 s     |          0.2856 s         |
+  |      2      |     39.3205 s     |          0.4757 s         |
+  |      4      |     55.5700 s     |          0.6703 s         |
+  |      8      |     70.6508 s     |          0.7966 s         | 
 
+  <img src="images/threads.jpeg" alt="Threads Média" height="240">  
 
-| Num Processos | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
-|:-------------:|:-----------------:|:-------------------------:|
-|      1        |     21.0353 s     |          0.5227 s         |
-|      2        |     40.8518 s     |          0.5871 s         |
-|      4        |     57.6770 s     |          0.9950 s         |
-|      8        |     74.3596 s     |          2.7458 s         | 
+  | Num Processos | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
+  |:-------------:|:-----------------:|:-------------------------:|
+  |      1        |     21.0353 s     |          0.5227 s         |
+  |      2        |     40.8518 s     |          0.5871 s         |
+  |      4        |     57.6770 s     |          0.9950 s         |
+  |      8        |     74.3596 s     |          2.7458 s         | 
 
-<img src="images/processos.jpeg" alt="Processos Desvio" height="240">
+  <img src="images/processos.jpeg" alt="Processos Desvio" height="240">
+
+</center>
+
 
 Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
 
