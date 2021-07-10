@@ -1,9 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="../images/logo.png" alt="UFES" width="340" height="240">
-  </a>
+  <img src="../images/logo.png" alt="UFES" width="340" height="240">
 
   <h3 align="center">Trabalho 1.1</h3>
 
@@ -16,32 +14,6 @@
     <br />
   </p>
 </p>
-
-
-<details open="open">
-  <summary><h2 style="display: inline-block">Tabela de Conteudo</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
 
 ## Sobre
 
@@ -94,6 +66,8 @@ Este programa pode ser executado tanto em modo de paralelismo por **processos** 
 
 ## Resultados
 
+Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foir ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
+
 | Num Threads | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
 |:-----------:|:-----------------:|:-------------------------:|
 |      1      |     20.5488 s     |          0.2856 s         |
@@ -108,7 +82,9 @@ Este programa pode ser executado tanto em modo de paralelismo por **processos** 
 |      4        |     57.6770 s     |          0.9950 s         |
 |      8        |     74.3596 s     |          2.7458 s         | 
 
-Mostrar plots
+<img src="images/threads.jpeg" alt="Threads Média" height="240">  
+<br />
+<img src="images/processos.jpeg" alt="Processos Desvio" height="240">
 
 Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
 
