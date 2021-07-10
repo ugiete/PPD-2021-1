@@ -2,7 +2,7 @@ from sys import argv
 from random import seed
 from time import time
 from src.process import process_sort
-from src.utils import generate_list, plot_metrics
+from src.utils import generate_list, plot_averages, plot_deviation
 from src.thread import thread_sort
 
 if __name__ == '__main__':
@@ -21,4 +21,5 @@ if __name__ == '__main__':
         results = thread_sort(INITIAL_LIST, LENGTH)
         label = "Threads"
     
-    plot_metrics(results, label)
+    plot_deviation(results['std'], label)
+    plot_averages(results['mean'], label)
