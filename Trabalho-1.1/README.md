@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="UFES" width="340" height="240">
+    <img src="../images/logo.png" alt="UFES" width="340" height="240">
   </a>
 
   <h3 align="center">Trabalho 1.1</h3>
@@ -18,10 +18,8 @@
 </p>
 
 
-
-<!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <summary><h2 style="display: inline-block">Tabela de Conteudo</h2></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -45,119 +43,79 @@
   </ol>
 </details>
 
+## Sobre
 
+Experimentar o paralelismo por meio de processos e threads na ordenação de um
+vetor de grandes dimensões. Comparar o tempo de execução da tarefa de ordenação
+de vetores com diferentes quantidades de processos ou threads.
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+### Feito com
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+* [Python 3](https://www.python.org/about/)
+* [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+* [threading](https://docs.python.org/3/library/threading.html)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+## Executando
 
+O script de ordenação pode ser executado seguindo estes passos. Os passos foram escritos para sistema Linux.
 
-### Built With
+### Hardware
 
-* []()
-* []()
-* []()
+O programa foi testado utilizando uma máquina com as seguintes especificações:
 
+* Processador de 8 núcleos e 16 threads
+* Memória de 32 GB e 3200 MHz
 
+Os resultados mostrados aqui podem variar de acordo com as especificações de hardware de diferentes máquinas.
 
-<!-- GETTING STARTED -->
-## Getting Started
+### Instalação
 
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+1. Clone este repositório
   ```sh
-  npm install npm@latest -g
+  git clone https://github.com/ugiete/PPD-2021-1.git
+  ```
+2. Entre na pasta Trabalho-1.1
+  ```sh
+  cd Trabalho-1.1
   ```
 
-### Installation
+## Uso
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+Este programa pode ser executado tanto em modo de paralelismo por **processos** quanto por **threads**.
 
+1. Paralelismo com processos
+  ```sh
+  python3 main.py
+  ```
+2. Paralelismo com threads
+  ```sh
+  python3 main.py --thread
+  ```
 
+## Resultados
 
-<!-- USAGE EXAMPLES -->
-## Usage
+| Num Threads | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
+|:-----------:|:-----------------:|:-------------------------:|
+|      1      |     20.5488 s     |          0.2856 s         |
+|      2      |     39.3205 s     |          0.4757 s         |
+|      4      |     55.5700 s     |          0.6703 s         |
+|      8      |     70.6508 s     |          0.7966 s         | 
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+| Num Processos | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
+|:-------------:|:-----------------:|:-------------------------:|
+|      1        |     21.0353 s     |          0.5227 s         |
+|      2        |     40.8518 s     |          0.5871 s         |
+|      4        |     57.6770 s     |          0.9950 s         |
+|      8        |     74.3596 s     |          2.7458 s         | 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Mostrar plots
 
+Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
 
+Embora em programas que utilizem uma única thread o GIL é interessante para gerenciamento de memória, em situações de paralelismo pode ser um gargalo na execução como vemos nas figuras, onde com o aumento do número de threads praticamente não há melhora no tempo de execução individual de cada uma e acaba por aumentar o tempo total de execução por conta dos overheads gerados.
 
-<!-- ROADMAP -->
-## Roadmap
+## Grupo
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+Felippe Barbosa Mozer - 2016102801  
+Leonardo Silva Ugiete - 2016101234  
+Lucas Quintino Frinhani - 2016101227

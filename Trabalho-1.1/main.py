@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     seed(time())
 
-    LENGTH = 50000000
+    LENGTH = 5000000
     INITIAL_LIST = generate_list(LENGTH)
 
     if is_process_sort:
