@@ -64,6 +64,16 @@ Este programa pode ser executado tanto em modo de paralelismo por **processos** 
   python3 main.py --thread
   ```
 
+## Módulos
+
+O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
+
+1. [process.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/process.py), módulo que lida com ordenação via paralelismo por processos;
+
+2. [thread.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/thread.py), módulo que lida com ordenação via paralelismo por threads;
+
+3. [utils.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/utils.py), módulo qu contém funções auxiliares para gerar uma lista aleatória, plotar gráficos e ordenar partições.
+
 ## Resultados
 
 Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.

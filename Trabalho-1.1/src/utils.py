@@ -22,17 +22,30 @@ def order_list(partition: list) -> None:
     
     partition.sort()
 
-def plot_metrics(results: dict, label: str) -> None:
-    """Plot timestamp results
+def plot_deviation(k: list, deviation: list, label: str) -> None:
+    """Plot standard deviation chart
 
     Args:
-        results (dict): [description]
-        label (str): [description]
+        k (list): Threads/Process used
+        deviation (list): Standard deviation of the timestamps
+        label (str): "Treads" or "Processos"
     """
-    k = [1, 2, 4, 8]
-    plt.plot(k, results['mean'], 'bo--')
-    plt.plot(k, results['std'], 'ro--')
-    plt.legend(['Média', 'Desvio Padrão'])
+    
+    plt.bar(x=k, height=deviation, color='r')
     plt.xlabel(label)
-    plt.ylabel('Tempo (s)')
+    plt.ylabel('Desvio Padrão (s)')
+    plt.show()
+
+def plot_averages(k: list, averages: list, label: str) -> None:
+    """Plot mean chart
+
+    Args:
+        k (list): Threads/Process used
+        averages (list): Timestamps averages
+        label (str): "Treads" or "Processos"
+    """
+    
+    plt.plot(k, averages, 'bo-')
+    plt.xlabel(label)
+    plt.ylabel('Tempo Médio (s)')
     plt.show()
