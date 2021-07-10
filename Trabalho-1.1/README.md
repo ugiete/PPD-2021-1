@@ -1,12 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -14,7 +5,7 @@
     <img src="images/logo.png" alt="UFES" width="340" height="240">
   </a>
 
-  <h3 align="center">Programação Paralela e Distribuida</h3>
+  <h3 align="center">Trabalho 1.1</h3>
 
   <p align="center">
     Felippe Barbosa Mozer
