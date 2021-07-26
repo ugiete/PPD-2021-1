@@ -3,10 +3,10 @@ from xmlrpc.server import SimpleXMLRPCServer
 hashTable = dict()
 
 def get(k):
-    if(k in hashTable.keys()):
+    try:
         return hashTable[k]
-    
-    return None
+    except:
+        return None
 
 def put(v):
     aux = v + 0.5
