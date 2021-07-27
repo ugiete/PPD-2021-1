@@ -2,9 +2,8 @@ from subprocess import Popen
 from sys import argv, executable
 from time import time, sleep
 from random import randint
-from multiprocessing.pool import ThreadPool
 from src.client import Client
-from src.utils import generate_list
+from multiprocessing.pool import ThreadPool
 
 def putThread(client: Client, n: int, M: int) -> list:
     return [client.put(randint(0, M)) for _ in range(n)]
@@ -31,7 +30,7 @@ if __name__ == "__main__":
     start = time()
 
     pool = ThreadPool(processes = nThreads)
-    keys = pool.map(client.put, generate_list(M), chunksize = 1)
+    keys = pool.map(client.put, [randint(0, M) for _ in range(m)], chunksize = 1)
 
     #for i in range(nThreads):
     #    elements_per_thread = m // nThreads
@@ -53,6 +52,6 @@ if __name__ == "__main__":
 
     print(time() - start)
 
-    #print(keys)
+    print(keys)
 
     serverProcess.kill()
