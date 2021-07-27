@@ -17,19 +17,21 @@
 
 ## Sobre
 
-Experimentar o paralelismo por meio de processos e threads na ordenação de um
-vetor de grandes dimensões. Comparar o tempo de execução da tarefa de ordenação
-de vetores com diferentes quantidades de processos ou threads.
+Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_
+RPC _(Remote Procedure Call)_ aos conceitos de paralelismo e/ou _threads_. Comparar o tempo de execução com diferentes quantidades de processos ou _threads_. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
 
 ### Feito com
 
 * [Python 3](https://www.python.org/about/)
+* [xmlrpc](https://docs.python.org/3/library/xmlrpc.html)
 * [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
 * [threading](https://docs.python.org/3/library/threading.html)
 
 ## Executando
 
-O script de ordenação pode ser executado seguindo estes passos. Os passos foram escritos para sistema Linux.
+O script pode ser executado seguindo estes passos. 
+
+**Obs: Os passos a seguir foram escritos para sistema Linux.**
 
 ### Hardware
 
@@ -46,31 +48,31 @@ Os resultados mostrados aqui podem variar de acordo com as especificações de h
   ```sh
   git clone https://github.com/ugiete/PPD-2021-1.git
   ```
-2. Entre na pasta Trabalho-1.1
+2. Entre na pasta Trabalho-1.2
   ```sh
-  cd Trabalho-1.1
+  cd Trabalho-1.2
   ```
 
 ## Uso
 
-Este programa pode ser executado tanto em modo de paralelismo por **processos** quanto por **threads**.
+Este programa pode ser executado na porta pré-determinada ou escolhida pelo usuário.
 
-1. Paralelismo com processos
+1. Porta pré-determinada (8000)
   ```sh
   python3 main.py
   ```
-2. Paralelismo com threads
+2. Porta determinada pelo usuário
   ```sh
-  python3 main.py --thread
+  python3 main.py --port your-port-here
   ```
 
 ## Módulos
 
 O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
-1. [process.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/process.py), módulo que lida com ordenação via paralelismo por processos;
+1. [client.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/client.py), módulo de operações do cliente;
 
-2. [thread.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/thread.py), módulo que lida com ordenação via paralelismo por threads;
+2. [server.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/server.py), módulo de conexão e registro de funções do servidor;
 
 3. [utils.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/utils.py), módulo qu contém funções auxiliares para gerar uma lista aleatória, plotar gráficos e ordenar partições.
 
