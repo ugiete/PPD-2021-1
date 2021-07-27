@@ -3,7 +3,7 @@
 <p align="center">
   <img src="../images/logo.png" alt="UFES" width="340" height="240">
 
-  <h3 align="center">Trabalho 1.1</h3>
+  <h3 align="center">Trabalho 1.2</h3>
 
   <p align="center">
     Felippe Barbosa Mozer
@@ -17,19 +17,17 @@
 
 ## Sobre
 
-Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_
-RPC _(Remote Procedure Call)_ aos conceitos de paralelismo e/ou _threads_. Comparar o tempo de execução com diferentes quantidades de processos ou _threads_. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
+Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_ RPC _(Remote Procedure Call)_ aos conceitos de paralelismo. Comparar o tempo de execução com diferentes quantidades de processos. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
 
 ### Feito com
 
 * [Python 3](https://www.python.org/about/)
 * [xmlrpc](https://docs.python.org/3/library/xmlrpc.html)
 * [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
-* [threading](https://docs.python.org/3/library/threading.html)
 
 ## Executando
 
-O script pode ser executado seguindo estes passos. 
+O script pode ser executado seguindo estes passos:
 
 **Obs: Os passos a seguir foram escritos para sistema Linux.**
 
@@ -74,16 +72,16 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 2. [server.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/server.py), módulo de conexão e registro de funções do servidor;
 
-3. [utils.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.1/src/utils.py), módulo qu contém funções auxiliares para gerar uma lista aleatória, plotar gráficos e ordenar partições.
+3. [utils.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/utils.py), módulo que contém funções auxiliares para gerar uma lista aleatória e plotar gráficos.
 
 ## Resultados
 
-1 Cliente
-  100k - 57.77926158905029
-  500k - 293.5026035308838
-  1M - 612.4989190101624
+Foram utilizados os valores de 1, 2, 4 e 8 processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
 
-Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
+- 1 Cliente
+  - 100k - 57.77926158905029
+  - 500k - 293.5026035308838
+  - 1M - 612.4989190101624
 
 <center>
 
