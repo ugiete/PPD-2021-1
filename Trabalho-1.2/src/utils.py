@@ -19,7 +19,7 @@ def plot_deviation(k: list, deviation: list, label: str) -> None:
     Args:
         k (list): Threads/Process used
         deviation (list): Standard deviation of the timestamps
-        label (str): "Treads" or "Processos"
+        label (str): "Threads" or "Processos"
     """
     
     plt.bar(x=k, height=deviation, color='r')
@@ -33,7 +33,7 @@ def plot_averages(k: list, averages: list, label: str) -> None:
     Args:
         k (list): Threads/Process used
         averages (list): Timestamps averages
-        label (str): "Treads" or "Processos"
+        label (str): "Threads" or "Processos"
     """
     
     plt.plot(k, averages, 'bo-')
