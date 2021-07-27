@@ -19,3 +19,4 @@
 Acesse os links para cada trabalho realizado na disciplina:
 
 * [Trabalho 1 - Parte 1](https://github.com/ugiete/PPD-2021-1/tree/master/Trabalho-1.1)
+* [Trabalho 1 - Parte 2](https://github.com/ugiete/PPD-2021-1/tree/master/Trabalho-1.2)
