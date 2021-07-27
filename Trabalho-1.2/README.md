@@ -19,11 +19,11 @@
 
 Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_ RPC _(Remote Procedure Call)_ aos conceitos de paralelismo. Comparar o tempo de execução com diferentes quantidades de processos. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
 
-### Feito com
+### Recursos
 
 * [Python 3](https://www.python.org/about/)
 * [xmlrpc](https://docs.python.org/3/library/xmlrpc.html)
-* [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+* [threading](https://docs.python.org/3/library/threading.html)
 
 ## Executando
 
@@ -79,9 +79,9 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cada um destes valores, uma quantidade de números inteiros é gerada, de forma randômica, variando entre 100.000 a 1.000.000 de números. Os resultados dos experimentos são apresentados abaixo.
 
 - 1 Cliente
-  - 100k - 57.77926158905029
-  - 500k - 293.5026035308838
-  - 1M - 612.4989190101624
+  - 100k - 
+  - 500k - 
+  - 1M - 
 - 2 Clientes
   - 100k - 
   - 500k - 
