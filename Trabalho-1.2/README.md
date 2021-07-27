@@ -76,30 +76,41 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 ## Resultados
 
-Foram utilizados os valores de 1, 2, 4 e 8 processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
+Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cada um destes valores, uma quantidade de números inteiros é gerada, de forma randômica, variando entre 100.000 a 1.000.000 de números. Os resultados dos experimentos são apresentados abaixo.
 
 - 1 Cliente
   - 100k - 57.77926158905029
   - 500k - 293.5026035308838
   - 1M - 612.4989190101624
+- 2 Clientes
+  - 100k - 
+  - 500k - 
+  - 1M - 
+- 4 Clientes
+  - 100k - 
+  - 500k - 
+  - 1M - 
+- 8 Clientes
+  - 100k - 
+  - 500k - 
+  - 1M - 
 
 <center>
 
-  | Num Threads | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
-  |:-----------:|:-----------------:|:-------------------------:|
-  |      1      |     20.5488 s     |          0.2856 s         |
-  |      2      |     39.3205 s     |          0.4757 s         |
-  |      4      |     55.5700 s     |          0.6703 s         |
-  |      8      |     70.6508 s     |          0.7966 s         | 
-
-
-  | Num Processos | Média Tempo Exec. | Desvio Padrão Tempo Exec. |
-  |:-------------:|:-----------------:|:-------------------------:|
-  |      1        |     21.0353 s     |          0.5227 s         |
-  |      2        |     40.8518 s     |          0.5871 s         |
-  |      4        |     57.6770 s     |          0.9950 s         |
-  |      8        |     74.3596 s     |          2.7458 s         | 
-
+  | Num Threads |  Total de valores  | Tempo Execução |
+  |:-----------:|:------------------:|:--------------:|
+  |      1      |      100.000       |     57,77 s    |
+  |             |      500.000       |    293,50 s    |
+  |             |     1.000.000      |    612,49 s    |
+  |      2      |      100.000       |     57,77 s    |
+  |             |      500.000       |    293,50 s    |
+  |             |     1.000.000      |    612,49 s    |
+  |      4      |      100.000       |     57,77 s    |
+  |             |      500.000       |    293,50 s    |
+  |             |     1.000.000      |    612,49 s    |
+  |      8      |      100.000       |     57,77 s    |
+  |             |      500.000       |    293,50 s    |
+  |             |     1.000.000      |    612,49 s    |
 
 </center>
 
