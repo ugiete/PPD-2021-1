@@ -1,4 +1,4 @@
-from xmlrpc.client import ServerProxy, MultiCall
+from xmlrpc.client import ServerProxy
 
 class Client():
     """RPC Client
