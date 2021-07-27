@@ -13,12 +13,15 @@ def put(v):
     k = hash(aux)
     hashTable[k] = v
     
-    return k
+    return str(k)
 
 # A simple server with get and put functions
-server = SimpleXMLRPCServer(("localhost", 8000))
+server = SimpleXMLRPCServer(("localhost", 8000), allow_none=True)
 print("Listening on port 8000...")
-server.register_multicall_functions()
 server.register_function(get, 'get')
 server.register_function(put, 'put')
-server.serve_forever()
+try:
+    server.serve_forever()
+except KeyboardInterrupt:
+    print("Server Interrupted")
+    exit(0)
