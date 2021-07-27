@@ -8,13 +8,16 @@ class Server():
         self._table = dict()
         self._server = SimpleXMLRPCServer((host, port), allow_none = True)
 
-        self._server.register_multicall_functions()
         self._server.register_function(self.__get, "get")
         self._server.register_function(self.__put, "put")
         self._server.register_function(self.__show, "show")
 
-        print(f"Listening on port {host}:{port}...")
-        self._server.serve_forever()
+        print(f"Listening on {host}:{port}...")
+        try:
+            self._server.serve_forever()
+        except KeyboardInterrupt:
+            print("Server Interrupted")
+            exit(0)
 
     def __get(self, k: str) -> int:
         """Get value from key
