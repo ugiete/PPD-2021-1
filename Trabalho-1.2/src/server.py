@@ -40,7 +40,7 @@ class Server():
             v (int): Value to be added
 
         Returns:
-            int: Generated key
+            str: Generated key
         """
         v_salt = v + 0.5
         k = str(hash(v_salt))
