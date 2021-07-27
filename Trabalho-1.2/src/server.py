@@ -29,10 +29,8 @@ class Server():
             int: value
         """
         try:
-            print(f"Retrieve {self._table[k]} from {k}")
             return self._table[k]
         except:
-            print(f"No {k} key")
             return None
     
     def __put(self, v: int) -> str:
@@ -49,7 +47,6 @@ class Server():
 
         self._table[k] = v
 
-        print(f"Put {v} on {k}")
         return k
     
     def __show(self) -> str:

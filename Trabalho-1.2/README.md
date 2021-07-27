@@ -76,6 +76,11 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 ## Resultados
 
+1 Cliente
+  100k - 57.77926158905029
+  500k - 293.5026035308838
+  1M - 612.4989190101624
+
 Foram utilizados os valores de 1, 2, 4 e 8 threads/processos durante os testes e para cada um destas instâncias foram realizados 10 testes, a lista que foi ordenada possui 50M de elementos que são números inteiros randomicamente gerados.
 
 <center>
