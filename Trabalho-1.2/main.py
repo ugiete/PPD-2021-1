@@ -4,8 +4,7 @@ from sys import argv, executable
 from time import time, sleep
 from random import randint, seed
 from src.client import Client
-from multiprocessing.pool import ThreadPool
-from threading import Thread, active_count
+from threading import Thread
 
 
 def putThread(client: Client, M: int, keylist: list, initial: int, end: int) -> None:
@@ -47,8 +46,6 @@ if __name__ == "__main__":
             valuelist[i] = 0
         nThreads = [1,2,4,8]
 
-        # pool = ThreadPool(processes = nThreads)
-        # keys = pool.map(client.put, [randint(0, M) for _ in range(m)], chunksize = 1)
         jobs = list()
 
         for idx in nThreads:
