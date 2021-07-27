@@ -1,6 +1,4 @@
 from xmlrpc.client import ServerProxy, MultiCall
-#from time import time
-#from random import randint
 
 class Client():
     """RPC Client
