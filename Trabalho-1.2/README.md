@@ -17,7 +17,7 @@
 
 ## Sobre
 
-Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_ RPC _(Remote Procedure Call)_ aos conceitos de paralelismo. Comparar o tempo de execução com diferentes quantidades de processos. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
+<div style="text-align: justify"> Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_ RPC _(Remote Procedure Call)_ aos conceitos de paralelismo. Comparar o tempo de execução com diferentes quantidades de processos. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor. </div>
 
 ### Feito com
 
@@ -53,7 +53,7 @@ Os resultados mostrados aqui podem variar de acordo com as especificações de h
 
 ## Uso
 
-Este programa pode ser executado na porta pré-determinada ou escolhida pelo usuário.
+Este programa pode ser executado na porta pré-determinada ou determinada pelo usuário.
 
 1. Porta pré-determinada (8000)
   ```sh
@@ -76,7 +76,7 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 ## Resultados
 
-Foram utilizados os valores de 1, 2, 4 e 8 processos durante os testes. Para cada instância de processos foram avaliados diferentes quantidades de valores a serem incluídos e recuperados na tabela, variando entre 100.000, 500.000 e 1.000.000. Apenas um teste foi realizado por quantidade de valores por processo. Os resultados estão apresentados na tabela abaixo.
+<div style="text-align: justify"> Foram utilizados os valores de 1, 2, 4 e 8 processos durante os testes. Para cada instância de processos foram avaliados diferentes quantidades de valores a serem incluídos e recuperados na tabela, variando entre 100.000, 500.000 e 1.000.000. Apenas um teste foi realizado por quantidade de valores por processo. Os resultados estão apresentados na tabela abaixo. </div>
 
 - 1 Cliente
   - 100k - 57.77926158905029
@@ -103,9 +103,9 @@ Foram utilizados os valores de 1, 2, 4 e 8 processos durante os testes. Para cad
 </center>
 
 
-Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
+<div style="text-align: justify"> Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
 
-Embora em programas que utilizem uma única thread o GIL é interessante para gerenciamento de memória, em situações de paralelismo pode ser um gargalo na execução como vemos nas figuras, onde com o aumento do número de threads praticamente não há melhora no tempo de execução individual de cada uma e acaba por aumentar o tempo total de execução por conta dos overheads gerados.
+Embora em programas que utilizem uma única thread o GIL é interessante para gerenciamento de memória, em situações de paralelismo pode ser um gargalo na execução como vemos nas figuras, onde com o aumento do número de threads praticamente não há melhora no tempo de execução individual de cada uma e acaba por aumentar o tempo total de execução por conta dos overheads gerados. </div>
 
 ## Grupo
 
