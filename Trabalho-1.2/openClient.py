@@ -1,5 +1,4 @@
 from src.client import Client
-import asyncio
 
 c = Client(port=9999)
 
