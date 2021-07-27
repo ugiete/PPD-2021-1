@@ -1,3 +1,4 @@
+from os import system
 from subprocess import Popen
 from sys import argv, executable
 from time import time, sleep
@@ -14,6 +15,7 @@ def putThread(client: Client, M: int, keylist: list, initial: int, end: int) -> 
             keylist[i] = client.put(randint(1, M+1))
     except:
         print("Algum erro aconteceu no put")
+        exit(0)
 
 def getThread(client: Client, keylist: list, valuelist: list, initial: int, end: int) -> None:
     try:
@@ -21,6 +23,7 @@ def getThread(client: Client, keylist: list, valuelist: list, initial: int, end:
             valuelist[i] = client.get(keylist[i])
     except:
         print("Algum erro aconteceu no get")
+        exit(0)
 
 
 if __name__ == "__main__":
@@ -36,11 +39,12 @@ if __name__ == "__main__":
         sleep(1)
 
         M = 1000000
-        m = 10
+        m = 8
         keylist = list(range(M))
         valuelist = list(range(M))
-        keylist.clear()
-        valuelist.clear()
+        for i in range(M):
+            keylist[i] = 0
+            valuelist[i] = 0
         nThreads = [1,2,4,8]
 
         # pool = ThreadPool(processes = nThreads)
@@ -82,9 +86,10 @@ if __name__ == "__main__":
                 j.join()
             
             end = time() - start
-            print('Timestamp for {idx} threads: ' + end)
-            keylist.clear()
-            valuelist.clear()
+            print(f'Timestamp for {idx} threads: {end}')
+            for i in range(m):
+                keylist[i] = 0
+                valuelist[i] = 0
             jobs.clear()
 
         serverProcess.kill()
