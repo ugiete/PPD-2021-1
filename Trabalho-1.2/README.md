@@ -96,11 +96,11 @@ Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cad
   |             |     1.000.000      |    532,97 s    |
 
 <img src="images/plot.png" alt="Timestamp" height="360" width="480">
+
+<img src="images/plotLinear.png" alt="Timestamp" height="360" width="480">
 </center>
 
-Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
-
-Embora em programas que utilizem uma única thread o GIL é interessante para gerenciamento de memória, em situações de paralelismo pode ser um gargalo na execução como vemos nas figuras, onde com o aumento do número de threads praticamente não há melhora no tempo de execução individual de cada uma e acaba por aumentar o tempo total de execução por conta dos overheads gerados.
+Nas figuras podemos ver a taxa de crescimento do tempo de execução de acordo com a variação do valor de **m**, percebe-se pouca diferença do tempo entre os diferentes números de threads utilizados, provavelmente pelo maior overhead causado pelo maior número de threads. Podemos perceber também um crescimento linear do tempo de execução, valendo destacar que quanto maior **m** para 4 e 8 threads houve melhora no tempo comparado com 1 e 2, ficando abaixo do valor de referência de crescimento linear.
 
 ## Grupo
 
