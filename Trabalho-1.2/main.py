@@ -38,13 +38,15 @@ if __name__ == "__main__":
         sleep(1)
 
         M = 1000000
-        m = 8
+        m = 1000000
         keylist = list(range(M))
         valuelist = list(range(M))
         for i in range(M):
             keylist[i] = 0
             valuelist[i] = 0
         nThreads = [1,2,4,8]
+
+        timestamps = {}
 
         jobs = list()
 
@@ -83,13 +85,18 @@ if __name__ == "__main__":
                 j.join()
             
             end = time() - start
-            print(f'Timestamp for {idx} threads: {end}')
+
+            timestamps[idx] = end
+            
             for i in range(m):
                 keylist[i] = 0
                 valuelist[i] = 0
+
             jobs.clear()
 
         serverProcess.kill()
+        print(timestamps)
     except KeyboardInterrupt:
         serverProcess.kill()
+        print(timestamps)
         exit(0)
