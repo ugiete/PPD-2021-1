@@ -1,9 +1,10 @@
-from os import system
+from os import system, times
 from subprocess import Popen
 from sys import argv, executable
 from time import time, sleep
 from random import randint, seed
 from src.client import Client
+from src.utils import plot_table
 from threading import Thread
 
 
@@ -38,7 +39,7 @@ if __name__ == "__main__":
         sleep(1)
 
         M = 1000000
-        m = 1000000
+        m = [100000, 500000, 1000000]
         keylist = list(range(M))
         valuelist = list(range(M))
         for i in range(M):
@@ -50,52 +51,55 @@ if __name__ == "__main__":
 
         jobs = list()
 
-        for idx in nThreads:
-            elements_per_thread = m // idx
-            start = time()
+        for mValue in m:
+            for idx in nThreads:
+                elements_per_thread = mValue // idx
+                start = time()
 
-            for i in range(idx):
-                initial = elements_per_thread*i
-                end = elements_per_thread*(i+1)
+                for i in range(idx):
+                    initial = elements_per_thread*i
+                    end = elements_per_thread*(i+1)
 
-                thread = Thread(target=putThread(
-                    Client(port=port), M, keylist, initial, end))
-                jobs.append(thread)
+                    thread = Thread(target=putThread(
+                        Client(port=port), M, keylist, initial, end))
+                    jobs.append(thread)
 
-            for j in jobs:
-                j.start()
+                for j in jobs:
+                    j.start()
 
-            for j in jobs:
-                j.join()
-            
-            jobs.clear()
-            
-            for i in range(idx):
-                initial = elements_per_thread*i
-                end = elements_per_thread*(i+1)
+                for j in jobs:
+                    j.join()
+                
+                jobs.clear()
+                
+                for i in range(idx):
+                    initial = elements_per_thread*i
+                    end = elements_per_thread*(i+1)
 
-                thread = Thread(target=getThread(
-                    Client(port=port), keylist, valuelist, initial, end))
-                jobs.append(thread)
+                    thread = Thread(target=getThread(
+                        Client(port=port), keylist, valuelist, initial, end))
+                    jobs.append(thread)
 
-            for j in jobs:
-                j.start()
+                for j in jobs:
+                    j.start()
 
-            for j in jobs:
-                j.join()
-            
-            end = time() - start
+                for j in jobs:
+                    j.join()
+                
+                end = time() - start
 
-            timestamps[idx] = end
-            
-            for i in range(m):
-                keylist[i] = 0
-                valuelist[i] = 0
+                timestamps[idx] = end
+                
+                for i in range(mValue):
+                    keylist[i] = 0
+                    valuelist[i] = 0
 
-            jobs.clear()
+                jobs.clear()
 
-        serverProcess.kill()
-        print(timestamps)
+            serverProcess.kill()
+            print(timestamps)
+        
+        plot_table(timestamps, nThreads, m)
     except KeyboardInterrupt:
         serverProcess.kill()
         print(timestamps)

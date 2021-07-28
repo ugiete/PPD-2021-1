@@ -78,23 +78,6 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cada um destes valores, uma quantidade de números inteiros é gerada, de forma randômica, variando entre 100.000 a 1.000.000 de números. Os resultados dos experimentos são apresentados abaixo.
 
-- 1 Cliente
-  - 100k - 59,38s
-  - 500k - 314,58s
-  - 1M - 642,12s
-- 2 Clientes
-  - 100k - 63,18s
-  - 500k - 327,06s
-  - 1M - 620,76s
-- 4 Clientes
-  - 100k - 63,10s
-  - 500k - 315,90s
-  - 1M - 535,27s
-- 8 Clientes
-  - 100k - 63,18s
-  - 500k - 319,67s
-  - 1M - 532,97s
-
 <center>
 
   | Num Threads |  Total de valores  | Tempo Execução |
@@ -112,6 +95,7 @@ Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cad
   |             |      500.000       |    319,67 s    |
   |             |     1.000.000      |    532,97 s    |
 
+<img src="images/plot.png" alt="Timestamp" height="240">
 </center>
 
 Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
