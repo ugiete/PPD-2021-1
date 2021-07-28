@@ -95,7 +95,7 @@ Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cad
   |             |      500.000       |    319,67 s    |
   |             |     1.000.000      |    532,97 s    |
 
-<img src="images/plot.png" alt="Timestamp" height="240">
+<img src="images/plot.png" alt="Timestamp" height="480" width="640">
 </center>
 
 Python possui o Python Global Interpreter (GIL) que é um lock mutex que permite apenas uma thread esteja sendo executada por vez no interpretador.
