@@ -11,14 +11,15 @@ class Node():
     def __init__(self, id: int, serial: int) -> None:
         self.id = id
         self.siblings = []
+        self.predecessor = -1
+        self.successor = -1
 
         self.client = mqtt.Client(f"Node_{serial}")
         self.client.connect("127.0.0.1") 
+        self.client.loop_start()
         self.client.subscribe("join")
         self.client.on_message = on_message
         
     
     def join(self) -> None:
         self.client.publish("join", self.id)
-
-
