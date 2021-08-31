@@ -3,7 +3,7 @@
 <p align="center">
   <img src="../images/logo.png" alt="UFES" width="340" height="240">
 
-  <h3 align="center">Trabalho 1.2</h3>
+  <h3 align="center">Trabalho 1.3</h3>
 
   <p align="center">
     Felippe Barbosa Mozer
@@ -22,7 +22,7 @@ Experimentar a implementação de sistemas cliente/servidor por meio de _middlew
 ### Recursos
 
 * [Python 3](https://www.python.org/about/)
-* [xmlrpc](https://docs.python.org/3/library/xmlrpc.html)
+* [paho-mqtt](https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php)
 * [threading](https://docs.python.org/3/library/threading.html)
 
 ## Executando
@@ -46,9 +46,9 @@ Os resultados mostrados aqui podem variar de acordo com as especificações de h
   ```sh
   git clone https://github.com/ugiete/PPD-2021-1.git
   ```
-2. Entre na pasta Trabalho-1.2
+2. Entre na pasta Trabalho-1.3
   ```sh
-  cd Trabalho-1.2
+  cd Trabalho-1.3
   ```
 
 ## Uso
