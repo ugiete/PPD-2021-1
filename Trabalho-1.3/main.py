@@ -19,15 +19,18 @@ for node in DHT:
 for node in DHT:
     node.getNeighbors()
 
-while True:
-    key = randint(0, pow(2,32))
-    put(Client, key, str(randint(0, 1000)))
-    sleep(1)
-    get(Client, key)
-    sleep(1)
+try:
+    while True:
+        key = randint(0, pow(2,32))
+        put(Client, key, str(randint(0, 1000)))
+        sleep(1)
+        get(Client, key)
+        sleep(1)
+except KeyboardInterrupt:
+    print("Aguarde desconexão")
+    for node in DHT:
+        node.disconnect()
 
-for node in DHT:
-    node.disconnect()
-
-Client.loop_stop(force=True)
-Client.disconnect()
+    Client.loop_stop(force=True)
+    Client.disconnect()
+    print("Programa finalizado!")
