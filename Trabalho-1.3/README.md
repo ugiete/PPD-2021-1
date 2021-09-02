@@ -22,8 +22,8 @@ Experimentar a implementação de sistemas cliente/servidor por meio de _middlew
 ### Recursos
 
 * [Python 3](https://www.python.org/about/)
+* [Mosquitto](https://mosquitto.org/)
 * [paho-mqtt](https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php)
-* [threading](https://docs.python.org/3/library/threading.html)
 
 ## Executando
 
@@ -38,7 +38,7 @@ O programa foi testado utilizando uma máquina com as seguintes especificações
 * Processador de 8 núcleos e 16 threads
 * Memória de 32 GB e 3200 MHz
 
-Os resultados mostrados aqui podem variar de acordo com as especificações de hardware de diferentes máquinas.
+O passo a passo para execução mostrado aqui podem variar de acordo com as especificações de hardware de diferentes máquinas.
 
 ### Instalação
 
@@ -53,15 +53,15 @@ Os resultados mostrados aqui podem variar de acordo com as especificações de h
 
 ## Uso
 
-Este programa pode ser executado na porta pré-determinada ou determinada pelo usuário.
+Este programa é executado por padrão em um loop infinito de postagens para os nós com um único cliente, no entanto o número de iterações máximas pode ser definido assim como o número de clientes. Contudo, com mais de um cliente as mensagens são duplicadas, já que todos estão assinando o mesmo tópico.
 
-1. Porta pré-determinada (8000)
+1. 1 cliente e loop infinito de execução
   ```sh
   python3 main.py
   ```
-2. Porta determinada pelo usuário
+2. Definir número de clientes e iterações máximas
   ```sh
-  python3 main.py --port your-port-here
+  python3 main.py --clients NC --iterMax IT
   ```
 
 ## Módulos
@@ -70,37 +70,9 @@ O pacote `src` contém os módulos auxiliares desenvolvidos, são eles:
 
 1. [client.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/client.py), módulo de operações do cliente;
 
-2. [server.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/server.py), módulo de conexão e registro de funções do servidor;
+2. [nodes.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/nodes.py), módulo de operações dos nós da DHT;
 
-3. [utils.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/utils.py), módulo que contém funções auxiliares para gerar uma lista aleatória e plotar gráficos.
-
-## Resultados
-
-Foram utilizados os valores de 1, 2, 4 e 8 _threads_ durante os testes. Para cada um destes valores, uma quantidade de números inteiros é gerada, de forma randômica, variando entre 100.000 a 1.000.000 de números. Os resultados dos experimentos são apresentados abaixo.
-
-<center>
-
-  | Num Threads |  Total de valores  | Tempo Execução |
-  |:-----------:|:------------------:|:--------------:|
-  |      1      |      100.000       |     59,38 s    |
-  |             |      500.000       |    314,58 s    |
-  |             |     1.000.000      |    642,19 s    |
-  |      2      |      100.000       |     63,18 s    |
-  |             |      500.000       |    327,06 s    |
-  |             |     1.000.000      |    620,76 s    |
-  |      4      |      100.000       |     63,10 s    |
-  |             |      500.000       |    315,90 s    |
-  |             |     1.000.000      |    535,27 s    |
-  |      8      |      100.000       |     63,18 s    |
-  |             |      500.000       |    319,67 s    |
-  |             |     1.000.000      |    532,97 s    |
-
-<img src="images/plot.png" alt="Timestamp" height="360" width="480">
-
-<img src="images/plotLinear.png" alt="Timestamp" height="360" width="480">
-</center>
-
-Nas figuras podemos ver a taxa de crescimento do tempo de execução de acordo com a variação do valor de **m**, percebe-se pouca diferença do tempo entre os diferentes números de threads utilizados, provavelmente pelo maior overhead causado pelo maior número de threads. Podemos perceber também um crescimento linear do tempo de execução, valendo destacar que quanto maior **m** para 4 e 8 threads houve melhora no tempo comparado com 1 e 2, ficando abaixo do valor de referência de crescimento linear.
+3. [utils.py](https://github.com/ugiete/PPD-2021-1/blob/master/Trabalho-1.2/src/utils.py), módulo que contém funções auxiliares para gerar um array de clientes e de nós.
 
 ## Grupo
 

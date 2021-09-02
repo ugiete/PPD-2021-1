@@ -1,36 +1,65 @@
 from random import randint
 from time import sleep
-from src.utils import *
-import paho.mqtt.client as mqtt
+from src.utils import init_clients, init_dht
+from sys import argv
 
-Client = mqtt.Client("Main")
-Client.connect("localhost")
-Client.subscribe("putok")
-Client.subscribe("getok")
-Client.message_callback_add("putok", put_confirmation)
-Client.message_callback_add("getok", get_confirmation)
-Client.loop_start()
+if __name__ == '__main__':
+    try:        
+        try:
+            flag_idx = argv.index("--clients")
+            clients = int(argv[flag_idx + 1])
+        except:
+            clients = 1
 
-DHT = init_dht(8)
+        try:
+            flag_idx = argv.index("--iterMax")
+            iterMax = int(argv[flag_idx + 1])
+            print(f"{iterMax} iterações (max)")
+        except:
+            iterMax = float('inf')
+        
+        print('Ctrl+C para sair')
 
-for node in DHT:
-    node.join()
+        print('\nCarregando nós ...')
 
-for node in DHT:
-    node.getNeighbors()
+        DHT = init_dht(8)
+        Clients = init_clients(clients)
 
-try:
-    while True:
-        key = randint(0, pow(2,32))
-        put(Client, key, str(randint(0, 1000)))
-        sleep(1)
-        get(Client, key)
-        sleep(1)
-except KeyboardInterrupt:
-    print("Aguarde desconexão")
-    for node in DHT:
-        node.disconnect()
+        for node in DHT:
+            node.join()
 
-    Client.loop_stop(force=True)
-    Client.disconnect()
-    print("Programa finalizado!")
+        for node in DHT:
+            node.getNeighbors()
+        
+        print("Publicando")
+
+        it = 0
+        while it < iterMax:
+            for c in Clients:
+                key = randint(0, pow(2,32))
+                c.put(key, str(randint(0, 1000)))
+                c.get(key)
+                sleep(0.5)
+
+            it = it + 1
+        
+        print("Aguarde desconexão")
+
+        for node in DHT:
+            node.disconnect()
+
+        for c in Clients:
+            c.disconnect()
+
+        print("Programa finalizado!")  
+
+    except KeyboardInterrupt:
+        print("Aguarde desconexão")
+
+        for node in DHT:
+            node.disconnect()
+
+        for c in Clients:
+            c.disconnect()
+
+        print("Programa finalizado!")    

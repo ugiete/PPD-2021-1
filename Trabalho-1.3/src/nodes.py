@@ -6,17 +6,17 @@ class Node():
     """Node class
     """
 
-    def __init__(self, id: int, serial: int) -> None:
+    def __init__(self, id: int, serial: int, host: str = "localhost") -> None:
         self.id = id
         self.serial = serial
         self.client = mqtt.Client(f"Node_{serial}")
         self.siblings = {}
         self.table = {}
 
-        self.connect()
+        self.connect(host = host)
         
     
-    def connect(self, host: str = "localhost") -> None:
+    def connect(self, host: str) -> None:
         self.client.message_callback_add("join", on_joined_sibling)
         self.client.message_callback_add("put", on_put)
         self.client.message_callback_add("get", on_get)
