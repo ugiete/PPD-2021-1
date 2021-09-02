@@ -68,16 +68,16 @@ class Node():
 
     
 def on_joined_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
-    sibling_id = message.payload.decode('ascii')
+    sibling_id = message.payload.decode('utf-8')
     node.addSibling(sibling_id)
 
 def on_put(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
-    payload = message.payload.decode('ascii')
+    payload = message.payload.decode('utf-8')
     [key, value] = payload.split(":")
 
     node.put(int(key), value)
 
 def on_get(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
-    key = message.payload.decode('ascii')
+    key = message.payload.decode('utf-8')
 
     node.get(int(key))
