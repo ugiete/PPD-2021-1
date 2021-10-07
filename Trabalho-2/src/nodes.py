@@ -59,8 +59,10 @@ class Node():
     def sortSiblings(self) -> None:
         self.siblings = {k: v for k,v in sorted(self.siblings.items(), key=itemgetter(1))}
     
-    def hasSiblings(self) -> None:
-        len(list(self.siblings.keys())) == 0
+    def hasSiblings(self) -> bool:
+        # print(self.siblings.keys(), self.siblings)
+        # print(len(list(self.siblings.keys())), list(self.siblings.keys()))
+        return len(list(self.siblings.keys())) > 0
     
     def getNeighbors(self) -> None:
         if not self.hasSiblings():
@@ -68,22 +70,33 @@ class Node():
             self.after = (None, pow(2, 32) - 1)
         else:
             keys = list(self.siblings.keys())
+            print(self.siblings)
 
-            myIndex = keys.index(self.serial)
-            before_index = myIndex - 1
-            after_index = myIndex + 1 if myIndex < (len(keys) - 1) else 0
+            for node, id in self.siblings.items():
+                if id > self.id:
+                    continue
+                before_index = keys.index(node)-1 if keys.index(node) > 0 else len(keys)-1
+                after_index = keys.index(node)+1 if keys.index(node) < len(keys)-1 else 0
+                print(before_index, after_index)
+                print(keys[before_index], keys[after_index])
+                break
+            # myIndex = keys.index(self.serial)
+            # before_index = myIndex - 1
+            # after_index = myIndex + 1 if myIndex < (len(keys) - 1) else 0
             
             self.before = (keys[before_index], self.siblings[keys[before_index]])
             self.after = (keys[after_index], self.siblings[keys[after_index]])
         
     def put(self, key: int, value: str) -> None:
         cond = (not self.hasSiblings()) or (key > self.before[1] and key <= self.id if self.before[1] < self.id else key > self.before[1] or key <= self.id)
+        # print(f'NOT SIB PUT {not self.hasSiblings()}')
         if cond:
             self.table[key] = value
             self.client.publish("putok", f"Valor armazenado com sucesso no nó {self.serial}")
         
     def get(self, key:int) -> None:
         cond = (not self.hasSiblings()) or (key > self.before[1] and key <= self.id if self.before[1] < self.id else key > self.before[1] or key <= self.id)
+        # print(f'NOT SIB get {not self.hasSiblings()}')
         if cond:
             value = self.table[key]
             self.client.publish("getok", f"Conteúdo armazenado \"{value}\", no nó {self.serial}")

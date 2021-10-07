@@ -14,7 +14,7 @@ def init_dht(taboo: list) -> array:
     return array([new_node], dtype=Node)
 
 def node_operation() -> bool:
-    x = randint(1, 3)
+    x = randint(1, 10)
 
     if x == 1:
         print('-----------------------------------------------PASS')
