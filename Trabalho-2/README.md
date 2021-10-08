@@ -3,7 +3,7 @@
 <p align="center">
   <img src="../images/logo.png" alt="UFES" width="340" height="240">
 
-  <h3 align="center">Trabalho 1.3</h3>
+  <h3 align="center">Trabalho 2</h3>
 
   <p align="center">
     Felippe Barbosa Mozer
@@ -17,7 +17,9 @@
 
 ## Sobre
 
-Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_ RPC _(Remote Procedure Call)_ aos conceitos de paralelismo. Comparar o tempo de execução com diferentes quantidades de processos. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
+Experimentar a implementação de sistemas cliente/servidor por meio de _middleware_ RPC _(Remote Procedure Call)_ aliado aos conceitos de paralelismo. Comparar o tempo de execução com diferentes quantidades de processos. Avaliar a necessidade de controle de concorrência quando há múltiplos clientes e um único servidor.
+
+Complemento ao [Trabalho 1.3](https://github.com/ugiete/PPD-2021-1/tree/master/Trabalho-1.3). Consiste da adição e remoção dinâmica de clientes do servidor, além de alguns ajustes necessários a este complemento.
 
 ### Recursos
 
@@ -46,9 +48,9 @@ O passo a passo para execução mostrado aqui podem variar de acordo com as espe
   ```sh
   git clone https://github.com/ugiete/PPD-2021-1.git
   ```
-2. Entre na pasta Trabalho-1.3
+2. Entre na pasta Trabalho-2
   ```sh
-  cd Trabalho-1.3
+  cd Trabalho-2
   ```
 
 ## Uso

@@ -14,14 +14,14 @@ def init_dht(taboo: list) -> array:
     return array([new_node], dtype=Node)
 
 def node_operation() -> bool:
-    x = randint(1, 10)
+    x = randint(1, 3)
 
     if x == 1:
         print('-----------------------------------------------PASS')
         return None
-    #elif x == 3:
-    #    print('-----------------------------------------------RMV')
-    #    return False
+    elif x == 3:
+       print('-----------------------------------------------RMV')
+       return False
     
     print('-----------------------------------------------ADD')
     return True
@@ -38,6 +38,7 @@ def update_dht(taboo: list, dht: array, cur_node: int) -> None:
         dht = append(dht, new_node)
 
         new_node.join()
+        sleep(1)
 
         print(f'\n\n ADD - DHT: {dht}\n')
 
@@ -48,7 +49,10 @@ def update_dht(taboo: list, dht: array, cur_node: int) -> None:
     elif op == False and len(dht) > 1:
         left_node = choice(dht)
         left_node.leave()
-        dht = delete(dht, left_node)
+        sleep(1)
+
+        dht = delete(dht, list(dht).index(left_node))
+        sleep(1)
 
         print(f'\n\n RMV - DHT: {dht}\n')
 

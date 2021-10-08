@@ -60,8 +60,6 @@ class Node():
         self.siblings = {k: v for k,v in sorted(self.siblings.items(), key=itemgetter(1))}
     
     def hasSiblings(self) -> bool:
-        # print(self.siblings.keys(), self.siblings)
-        # print(len(list(self.siblings.keys())), list(self.siblings.keys()))
         return len(list(self.siblings.keys())) > 0
     
     def getNeighbors(self) -> None:
@@ -72,34 +70,24 @@ class Node():
             keys = list(self.siblings.keys())
             print(self.siblings)
 
-            for node, id in self.siblings.items():
-                if id > self.id:
-                    continue
-                before_index = keys.index(node)-1 if keys.index(node) > 0 else len(keys)-1
-                after_index = keys.index(node)+1 if keys.index(node) < len(keys)-1 else 0
-                print(before_index, after_index)
-                print(keys[before_index], keys[after_index])
-                break
-            # myIndex = keys.index(self.serial)
-            # before_index = myIndex - 1
-            # after_index = myIndex + 1 if myIndex < (len(keys) - 1) else 0
+            myIndex = keys.index(self.serial)
+            before_index = myIndex - 1 if myIndex > 0 else len(keys) - 1
+            after_index = myIndex + 1 if myIndex < (len(keys) - 1) else 0
             
             self.before = (keys[before_index], self.siblings[keys[before_index]])
             self.after = (keys[after_index], self.siblings[keys[after_index]])
         
     def put(self, key: int, value: str) -> None:
-        cond = (not self.hasSiblings()) or (key > self.before[1] and key <= self.id if self.before[1] < self.id else key > self.before[1] or key <= self.id)
-        # print(f'NOT SIB PUT {not self.hasSiblings()}')
+        cond = (not self.hasSiblings()) or ((key > self.before[1] and key <= self.id) if self.before[1] < self.id else (key > self.before[1] or key <= self.id))
         if cond:
             self.table[key] = value
-            self.client.publish("putok", f"Valor armazenado com sucesso no nó {self.serial}")
+            self.client.publish("putok", f"Valor armazenado com sucesso no nó {self.serial}, chave {key}")
         
     def get(self, key:int) -> None:
-        cond = (not self.hasSiblings()) or (key > self.before[1] and key <= self.id if self.before[1] < self.id else key > self.before[1] or key <= self.id)
-        # print(f'NOT SIB get {not self.hasSiblings()}')
+        cond = (not self.hasSiblings()) or ((key > self.before[1] and key <= self.id) if self.before[1] < self.id else (key > self.before[1] or key <= self.id))
         if cond:
             value = self.table[key]
-            self.client.publish("getok", f"Conteúdo armazenado \"{value}\", no nó {self.serial}")
+            self.client.publish("getok", f"Conteúdo armazenado \"{value}\", no nó {self.serial}, chave {key}")
         
     def disconnect(self) -> None:
         self.client.loop_stop(force=True)
@@ -108,16 +96,16 @@ class Node():
     
 def on_joined_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
     sibling_id = message.payload.decode('utf-8')
-    if f'{node.serial}@{node.id}' != sibling_id:
-        print(f'self - {node.serial}@{node.id} != {sibling_id}')
-        node.addSibling(sibling_id)
-        node.client.publish("joinok", f'{node.serial}@{node.id}')
-        sleep(1)
+    # if f'{node.serial}@{node.id}' != sibling_id:
+    print(f'self - {node.serial}@{node.id} != {sibling_id}')
+    node.addSibling(sibling_id)
+    node.client.publish("joinok", f'{node.serial}@{node.id}')
+    sleep(1)
 
 def on_joined_ok_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
     sibling_id = message.payload.decode('utf-8')
-    if f'{node.serial}@{node.id}' != sibling_id:
-        node.addSibling(sibling_id)
+    # if f'{node.serial}@{node.id}' != sibling_id:
+    node.addSibling(sibling_id)
 
 def on_left_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
     sibling_id = message.payload.decode('utf-8')
