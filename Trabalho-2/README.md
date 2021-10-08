@@ -61,9 +61,9 @@ Este programa é executado por padrão em um loop infinito de postagens para os 
   ```sh
   python3 main.py
   ```
-2. Definir número de clientes e iterações máximas
+2. Definir total de iterações
   ```sh
-  python3 main.py --clients NC --iterMax IT
+  python3 main.py --iterMax IT
   ```
 
 ## Módulos

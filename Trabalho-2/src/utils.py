@@ -35,6 +35,7 @@ def update_dht(taboo: list, dht: array, cur_node: int) -> None:
             id = randint(0, pow(2, 32) - 1)
 
         new_node = Node(id, cur_node + 1)
+        print(f'Nó {cur_node+1} adicionado, com id {id}')
         dht = append(dht, new_node)
 
         new_node.join()
@@ -46,20 +47,16 @@ def update_dht(taboo: list, dht: array, cur_node: int) -> None:
         return cur_node + 1, dht
     elif op == False and len(dht) > 1:
         left_node = choice(dht)
+        print(f'Nó {left_node.serial} removido')
         node_index = list(dht).index(left_node)
         left_node.leave()
+        sleep(1)
         left_node.disconnect()
-        sleep(1)
-        dht = delete(dht, node_index)
         del left_node
-
-        dht = delete(dht, list(dht).index(left_node))
-        sleep(1)
+        dht = delete(dht, node_index)
 
         for node in dht:
             node.getNeighbors()
-        
-        del left_node
 
     return cur_node, dht
 
