@@ -47,14 +47,12 @@ class Node():
         except:
             self.siblings[int(serial)] = int(id)
             self.sortSiblings()
-            print(f'N{self.serial} - {self.siblings}')
     
     def rmvSibling(self, value: str) -> None:
-        [serial, id] = value.split("@")
+        [serial, _] = value.split("@")
 
-        if int(serial) != self.serial:
-            del self.siblings[int(serial)]
-            self.sortSiblings()
+        del self.siblings[int(serial)]
+        self.sortSiblings()
     
     def sortSiblings(self) -> None:
         self.siblings = {k: v for k,v in sorted(self.siblings.items(), key=itemgetter(1))}
@@ -68,7 +66,6 @@ class Node():
             self.after = (None, pow(2, 32) - 1)
         else:
             keys = list(self.siblings.keys())
-            print(self.siblings)
 
             myIndex = keys.index(self.serial)
             before_index = myIndex - 1 if myIndex > 0 else len(keys) - 1
@@ -96,15 +93,12 @@ class Node():
     
 def on_joined_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
     sibling_id = message.payload.decode('utf-8')
-    # if f'{node.serial}@{node.id}' != sibling_id:
-    print(f'self - {node.serial}@{node.id} != {sibling_id}')
     node.addSibling(sibling_id)
     node.client.publish("joinok", f'{node.serial}@{node.id}')
     sleep(1)
 
 def on_joined_ok_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):
     sibling_id = message.payload.decode('utf-8')
-    # if f'{node.serial}@{node.id}' != sibling_id:
     node.addSibling(sibling_id)
 
 def on_left_sibling(_client: mqtt.MQTT_CLIENT, node: Node, message: mqtt.MQTTMessage):

@@ -40,24 +40,26 @@ def update_dht(taboo: list, dht: array, cur_node: int) -> None:
         new_node.join()
         sleep(1)
 
-        print(f'\n\n ADD - DHT: {dht}\n')
-
         for node in dht:
             node.getNeighbors()
 
         return cur_node + 1, dht
     elif op == False and len(dht) > 1:
         left_node = choice(dht)
+        node_index = list(dht).index(left_node)
         left_node.leave()
+        left_node.disconnect()
         sleep(1)
+        dht = delete(dht, node_index)
+        del left_node
 
         dht = delete(dht, list(dht).index(left_node))
         sleep(1)
 
-        print(f'\n\n RMV - DHT: {dht}\n')
-
         for node in dht:
             node.getNeighbors()
+        
+        del left_node
 
     return cur_node, dht
 
